@@ -1,0 +1,16 @@
+name: PaC
+description: A minimal TypeScript Pulumi program
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
+packages:
+  porkbun:
+    source: terraform-provider
+    version: 0.12.0
+    parameters:
+      - jianyuan/porkbun

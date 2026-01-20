@@ -1,0 +1,19 @@
+app:
+  dashboard_url: 'https://pangolin.{{{SECRET_DOMAIN}}}'
+
+domains:
+  domain1:
+    base_domain: 'pangolin.{{{SECRET_DOMAIN}}}'
+    cert_resolver: 'letsencrypt'
+
+server:
+  secret: '{{{SECRET_SERVER_SECRET}}}'
+
+gerbil:
+  base_endpoint: 'pangolin.{{{SECRET_DOMAIN}}}'
+
+flags:
+  require_email_verification: false
+  disable_signup_without_invite: true
+  disable_user_create_org: true
+  allow_raw_resources: true
