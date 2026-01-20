@@ -252,53 +252,6 @@ write_files:
         additionalSecretOutputs: ['stdout', 'stderr'],
       },
     );
-
-    // pulumi
-    //   .all(
-    //     Object.entries(stackEnv).map(
-    //       ([name, value]) =>
-    //         // process the env vars before the apply() call to avoid exposing secrets in resource outputs
-    //         pulumi.interpolate`${name}="${EnvUtils.escapeBashEnvValue(value)}"`,
-    //     ),
-    //   )
-    //   .apply((envArray) => {
-    //     const stringifiedEnv = envArray.join(' ');
-
-    //     const deployStack = new command.remote.Command(
-    //       'docker-compose-up',
-    //       {
-    //         create: [
-    //           `cd ${remoteStackDirectory}`,
-    //           'docker compose pull',
-    //           `${stringifiedEnv} docker compose up -d --force-recreate`,
-    //         ].join(' && '),
-    //         update: [
-    //           `cd ${remoteStackDirectory}`,
-    //           'docker compose pull',
-    //           `${stringifiedEnv} docker compose down --remove-orphans`,
-    //           `${stringifiedEnv} docker compose up -d --force-recreate`,
-    //           'docker image prune -a -f',
-    //         ].join(' && '),
-    //         delete: [
-    //           `cd ${remoteStackDirectory}`,
-    //           `${stringifiedEnv} docker compose down --remove-orphans`,
-    //           'docker image prune -a -f',
-    //         ].join(' && '),
-    //         addPreviousOutputInEnv: false,
-    //         triggers: [pangolinFiles],
-    //         connection,
-    //       },
-    //       {
-    //         dependsOn: copyPangolinFiles,
-    //         // hooks: {
-    //         //   afterCreate: [checkForMissingVariables],
-    //         //   afterUpdate: [checkForMissingVariables],
-    //         // },
-    //         deleteBeforeReplace: true,
-    //         additionalSecretOutputs: ['stdout', 'stderr'],
-    //       },
-    //     );
-    //   });
   });
 }
 

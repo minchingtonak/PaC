@@ -4,16 +4,24 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@hanseltime/pulumi-file-utils':
+    hash: e5d211be610d1ebcd0e4781e82cb1ec57ab59635056aa758f4366f001a469c10
+    path: patches/@hanseltime__pulumi-file-utils.patch
+  '@pulumi/command':
+    hash: 919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6
+    path: patches/@pulumi__command.patch
+
 importers:
 
   .:
     dependencies:
       '@hanseltime/pulumi-file-utils':
         specifier: ^1.2.0
-        version: 1.2.0(@pulumi/pulumi@3.216.0(typescript@5.9.3))
+        version: 1.2.0(patch_hash=e5d211be610d1ebcd0e4781e82cb1ec57ab59635056aa758f4366f001a469c10)(@pulumi/pulumi@3.216.0(typescript@5.9.3))
       '@pulumi/command':
         specifier: ^1.1.3
-        version: 1.1.3(typescript@5.9.3)
+        version: 1.1.3(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)
       '@pulumi/hcloud':
         specifier: ^1.31.0
         version: 1.31.0(typescript@5.9.3)
@@ -1131,7 +1139,7 @@ snapshots:
       protobufjs: 7.5.4
       yargs: 17.7.2
 
-  '@hanseltime/pulumi-file-utils@1.2.0(@pulumi/pulumi@3.216.0(typescript@5.9.3))':
+  '@hanseltime/pulumi-file-utils@1.2.0(patch_hash=e5d211be610d1ebcd0e4781e82cb1ec57ab59635056aa758f4366f001a469c10)(@pulumi/pulumi@3.216.0(typescript@5.9.3))':
     dependencies:
       '@pulumi/pulumi': 3.216.0(typescript@5.9.3)
 
@@ -1386,7 +1394,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@pulumi/command@1.1.3(typescript@5.9.3)':
+  '@pulumi/command@1.1.3(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)':
     dependencies:
       '@pulumi/pulumi': 3.216.0(typescript@5.9.3)
     transitivePeerDependencies:
