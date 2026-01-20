@@ -1,0 +1,147 @@
+name: Pulumi with PR Review
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  actions: write
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  pulumi:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'homelab' || '' }}
+    concurrency:
+      group: ${{ github.ref == 'refs/heads/main' && 'homelab' || github.run_id }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.13.0"
+          cache: "pnpm"
+          cache-dependency-path: ./pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: ./
+      # end setup
+      # begin preview
+      # This step is needed to comment on PRs.
+      # PR comments are not posted if the preview step fails due
+      # to detecting changes (expect-no-changes: true)
+      - name: Pulumi preview (PR comment)
+        uses: pulumi/actions@v6
+        if: github.event_name == 'pull_request'
+        with:
+          command: preview
+          stack-name: dev
+          work-dir: ./
+          comment-on-pr: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: preview
+
+      - name: Pulumi preview (check for changes)
+        uses: pulumi/actions@v6
+        continue-on-error: true
+        with:
+          command: preview
+          stack-name: dev
+          work-dir: ./
+          comment-on-pr: false
+          expect-no-changes: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: check-for-changes
+
+      - name: Add infra diff label
+        if: github.event_name == 'pull_request' && steps.check-for-changes.outcome == 'failure'
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Create or update the label with a specific color
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'infra diff',
+                color: '6F7C00',
+                description: 'infrastructure changes detected by Pulumi'
+              });
+            } catch (error) {
+              // Label might already exist, update it
+              if (error.status === 422) {
+                await github.rest.issues.updateLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: 'infra diff',
+                  color: '6F7C00',
+                  description: 'infrastructure changes detected by Pulumi'
+                });
+              }
+            }
+
+            // Add the label to the PR
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['infra diff']
+            });
+
+      - name: Remove infra diff label
+        if: github.event_name == 'pull_request' && steps.check-for-changes.outcome == 'success'
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Remove the label from the PR if it exists
+            try {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                name: 'infra diff'
+              });
+            } catch (error) {
+              // Label might not exist on the PR, which is fine
+              if (error.status !== 404) {
+                throw error;
+              }
+            }
+      # end preview
+      # begin deployment
+      # deploy only if changes were found when running preview
+      - name: Pulumi up
+        if: github.ref == 'refs/heads/main' && steps.check-for-changes.outcome == 'failure'
+        uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: dev
+          comment-on-pr: false
+          work-dir: ./
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # end deployment
