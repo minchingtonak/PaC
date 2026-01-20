@@ -2,7 +2,7 @@ import * as pulumi from '@pulumi/pulumi';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as Handlebars from 'handlebars';
-import { EnvUtils } from '../env-utils';
+import { EnvUtils } from '../utils/';
 
 export interface RenderedTemplateFile {
   idSafeName: string;
