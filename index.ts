@@ -1,39 +1,42 @@
 import {
   loadConfiguration,
-  createFirewall,
-  generateCloudInit,
-  createServer,
-  setupDNS,
-  initializeServer,
-  deployApplication,
+  Server,
+  ServerDns,
+  AppDeployment,
 } from './pulumi';
 
 function main() {
   const config = loadConfiguration();
 
-  const firewall = createFirewall();
-  const cloudInit = generateCloudInit(
-    config.sshPublicKeyAkmin,
-    config.vpsDomain,
-  );
-  const server = createServer(firewall, cloudInit);
+  const server = new Server('pangolin-server', {
+    sshPublicKey: config.sshPublicKeyAkmin,
+    vpsDomain: config.vpsDomain,
+    resourceIdPrefix: 'pangolin',
+  });
 
-  setupDNS(
-    server,
-    config.vpsDomain,
-    config.porkbunApiKey,
-    config.porkbunSecretKey,
-  );
+  const dnsSetup = new ServerDns('pangolin-dns', {
+    server: server.server,
+    domain: config.vpsDomain,
+    resourceIdPrefix: 'pangolin',
+    porkbunApiKey: config.porkbunApiKey,
+    porkbunSecretKey: config.porkbunSecretKey,
+  });
 
-  const rebootCommand = initializeServer(server, config.sshPrivateKeyAkmin);
-
-  deployApplication(
-    server,
+  const rebootCommand = server.initializeAndReboot(
     config.sshPrivateKeyAkmin,
-    config.vpsDomain,
-    config.acmeEmail,
-    rebootCommand,
   );
+
+  const appDeployment = new AppDeployment('pangolin-app', {
+    server: server.server,
+    sshPrivateKey: config.sshPrivateKeyAkmin,
+    stackName: 'pangolin',
+    localStackDirectory: './pangolin',
+    templateEnvironment: {
+      DOMAIN: config.vpsDomain,
+      ACME_EMAIL: config.acmeEmail,
+    },
+    dependsOn: rebootCommand,
+  });
 }
 
 main();
