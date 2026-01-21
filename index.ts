@@ -1,9 +1,4 @@
-import {
-  loadConfiguration,
-  Server,
-  ServerDns,
-  AppDeployment,
-} from './pulumi';
+import { loadConfiguration, ServerDns, AppDeployment, Server } from './pulumi';
 
 function main() {
   const config = loadConfiguration();
@@ -22,9 +17,7 @@ function main() {
     porkbunSecretKey: config.porkbunSecretKey,
   });
 
-  const rebootCommand = server.initializeAndReboot(
-    config.sshPrivateKeyAkmin,
-  );
+  const rebootCommand = server.initializeAndReboot(config.sshPrivateKeyAkmin);
 
   const appDeployment = new AppDeployment('pangolin-app', {
     server: server.server,
