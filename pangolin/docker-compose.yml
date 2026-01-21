@@ -32,6 +32,7 @@ services:
       - 21820:21820/udp
       - 443:443
       - 80:80
+      - 25565:25565/tcp # minecraft
 
   traefik:
     image: traefik:v3.4.0@sha256:4cf907247939b5d20bf4eff73abd21cb413c339600dde76dbc94a874b2578a27

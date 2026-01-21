@@ -39,6 +39,8 @@ entryPoints:
     http:
       tls:
         certResolver: 'letsencrypt'
+  tcp-25565:
+    address: ":25565/tcp"
 
 serversTransport:
   insecureSkipVerify: true
