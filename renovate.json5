@@ -29,7 +29,12 @@
 
   pruneStaleBranches: false,
 
-  packageRules: [],
+  packageRules: [
+    {
+      matchPackageNames: ['fosrl/pangolin'],
+      versioning: 'regex:^(?<compatibility>ee)-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
+    },
+  ],
 
   docker: { pinDigests: true },
 }
