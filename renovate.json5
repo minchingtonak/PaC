@@ -1,0 +1,35 @@
+{
+  // https://docs.renovatebot.com/configuration-options
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  // https://emmer.dev/blog/keep-docker-base-images-updated-with-renovate
+  // https://nickcunningh.am/blog/how-to-automate-version-updates-for-your-self-hosted-docker-containers-with-gitea-renovate-and-komodo
+  extends: ['config:recommended'],
+  dependencyDashboard: true,
+  dependencyDashboardTitle: 'Renovate Dashboard',
+
+  schedule: 'every saturday',
+
+  timezone: 'America/New_York',
+  // always open vulnerability-fixing pull requests immediately
+  vulnerabilityAlerts: { labels: ['security'], schedule: 'at any time' },
+
+  ignoreUnstable: true,
+  minimumReleaseAge: '4 days',
+  minimumReleaseAgeBehaviour: 'timestamp-optional',
+
+  prHourlyLimit: 0,
+  prConcurrentLimit: 0,
+
+  // https://docs.renovatebot.com/configuration-options/#prbodytemplate
+  prBodyTemplate: '{{{header}}}{{{table}}}{{{warnings}}}{{{notes}}}{{{configDescription}}}{{{controls}}}{{{footer}}}',
+
+  ignorePaths: ['sdks/**'],
+
+  rangeStrategy: 'bump',
+
+  pruneStaleBranches: false,
+
+  packageRules: [],
+
+  docker: { pinDigests: true },
+}
