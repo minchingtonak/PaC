@@ -35,7 +35,7 @@ services:
       - 25565:25565/tcp # minecraft
 
   traefik:
-    image: traefik:v3.4.0@sha256:4cf907247939b5d20bf4eff73abd21cb413c339600dde76dbc94a874b2578a27
+    image: traefik:v3.6.9@sha256:9004e1cd1e33c5eb0b6ec02bc6cfda61fe9caca36751114b1c9c6662f01b264a
     container_name: traefik
     restart: unless-stopped
     network_mode: service:gerbil
