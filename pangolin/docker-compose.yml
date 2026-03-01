@@ -1,6 +1,6 @@
 services:
   pangolin:
-    image: fosrl/pangolin:ee-1.14.1@sha256:e00bb793d2ceba91be463665d658f6bdc6869f987bf5db3924f37679468c5e4d
+    image: fosrl/pangolin:ee-1.15.4@sha256:e5e2336a941709c6e3cf29d3f78d08e00ffb0ddc4a47c50b0b791064930d8410
     container_name: pangolin
     restart: unless-stopped
     volumes:
