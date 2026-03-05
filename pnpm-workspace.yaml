@@ -2,5 +2,4 @@ onlyBuiltDependencies:
   - '@pulumi/porkbun'
 
 patchedDependencies:
-  "@hanseltime/pulumi-file-utils": patches/@hanseltime__pulumi-file-utils.patch
   "@pulumi/command": patches/@pulumi__command.patch

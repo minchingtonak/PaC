@@ -1,7 +1,6 @@
-import * as pulumi from "@pulumi/pulumi";
-import { RenderedTemplateFile, TemplateProcessor } from "./template-processor";
-import { CopyableAsset } from "@hanseltime/pulumi-file-utils";
-import { TemplateContext } from "./template-context";
+import * as pulumi from '@pulumi/pulumi';
+import { RenderedTemplateFile, TemplateProcessor } from './template-processor';
+import { TemplateContext } from './template-context';
 
 export type HandlebarsTemplateFileArgs<
   TContext extends Record<string, unknown>,
@@ -16,11 +15,11 @@ export class HandlebarsTemplateFile<
 >
   extends pulumi.ComponentResource
 {
-  public static RESOURCE_TYPE = "HaC:templates:HandlebarsTemplateFile";
+  public static RESOURCE_TYPE = 'HaC:templates:HandlebarsTemplateFile';
 
   processedTemplate: RenderedTemplateFile;
 
-  asset: CopyableAsset;
+  asset: pulumi.Output<pulumi.asset.StringAsset>;
 
   constructor(
     name: string,
@@ -35,19 +34,8 @@ export class HandlebarsTemplateFile<
       args.templateContext.get(),
     );
 
-    this.asset = new CopyableAsset(
-      `${name}-rendered-template-${this.processedTemplate.idSafeName}`,
-      {
-        asset:
-          pulumi.Output.isInstance(this.processedTemplate.content) ?
-            this.processedTemplate.content.apply(
-              (val) => new pulumi.asset.StringAsset(val),
-            )
-          : new pulumi.asset.StringAsset(this.processedTemplate.content),
-        synthName: this.processedTemplate.idSafeName,
-        tmpCopyDir: "tmp",
-        noClean: false,
-      },
+    this.asset = this.processedTemplate.content.apply(
+      (val) => new pulumi.asset.StringAsset(val),
     );
 
     this.registerOutputs();

@@ -6,10 +6,7 @@ import {
   TemplateContext,
   TemplateProcessor,
 } from '../templates';
-import {
-  SERVER_USERNAME,
-  SERVER_USER_HOME_DIR,
-} from './constants';
+import { SERVER_USERNAME, SERVER_USER_HOME_DIR } from './constants';
 
 export interface AppDeploymentArgs {
   server: hcloud.Server;
@@ -69,9 +66,9 @@ export class AppDeployment extends pulumi.ComponentResource {
       const renderedFiles = new HandlebarsTemplateDirectory(
         `${args.stackName}-app-files-dir`,
         {
-          templateContext: new TemplateContext<
-            typeof args.templateEnvironment
-          >(resolvedEnv),
+          templateContext: new TemplateContext<typeof args.templateEnvironment>(
+            resolvedEnv,
+          ),
           templateDirectory: args.localStackDirectory,
         },
         defaultResourceOptions,
@@ -92,7 +89,7 @@ export class AppDeployment extends pulumi.ComponentResource {
         new command.remote.CopyToRemote(
           `${args.stackName}-app-copy-rendered-${templateFile.processedTemplate.idSafeName}`,
           {
-            source: templateFile.asset.copyableSource,
+            source: templateFile.asset,
             remotePath: `${SERVER_USER_HOME_DIR}/${relativePath}`,
             connection,
           },

@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  '@hanseltime/pulumi-file-utils':
-    hash: e5d211be610d1ebcd0e4781e82cb1ec57ab59635056aa758f4366f001a469c10
-    path: patches/@hanseltime__pulumi-file-utils.patch
   '@pulumi/command':
     hash: 919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6
     path: patches/@pulumi__command.patch
@@ -16,12 +13,9 @@ importers:
 
   .:
     dependencies:
-      '@hanseltime/pulumi-file-utils':
-        specifier: ^1.2.0
-        version: 1.2.0(patch_hash=e5d211be610d1ebcd0e4781e82cb1ec57ab59635056aa758f4366f001a469c10)(@pulumi/pulumi@3.224.0(typescript@5.9.3))
       '@pulumi/command':
-        specifier: ^1.1.3
-        version: 1.1.3(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)
+        specifier: ^1.2.1
+        version: 1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)
       '@pulumi/hcloud':
         specifier: ^1.32.1
         version: 1.32.1(typescript@5.9.3)
@@ -56,12 +50,6 @@ packages:
     resolution: {integrity: sha512-rc1hOQtjIWGxcxpb9aHAfLpIctjEnsDehj0DAiVfBlmT84uvR0uUtN2hEi/ecvWVjXUGf5qPF4qEgiLOx1YIMQ==}
     engines: {node: '>=6'}
     hasBin: true
-
-  '@hanseltime/pulumi-file-utils@1.2.0':
-    resolution: {integrity: sha512-aWRpM7x8aasguuG4a8aVA6DWD60gbK7CYg59M167VF6kxsxVpjBEGIB2Vpq64xA0q212Fhf9h+N9/SokksGaoA==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      '@pulumi/pulumi': ^3.158.0
 
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
@@ -241,8 +229,8 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@pulumi/command@1.1.3':
-    resolution: {integrity: sha512-eBzGE/BQlxMNcxrrA62N4cLaHdL0xDSRACXxB0Hjc4rJG60vhpDVO130xxb4x3cZ7HT1kvjS4KuuoH8R5JRbIQ==}
+  '@pulumi/command@1.2.1':
+    resolution: {integrity: sha512-mutNDIUYP67yCBYOVIidQyxuTwZDY9v/sx9EGbgIv4PXfyfolOKGgGLeoHEbI1lxRwaw2wbTZ3VNIynDnA5VKA==}
 
   '@pulumi/hcloud@1.32.1':
     resolution: {integrity: sha512-BpsKKQ83Mt7l+0m07S97gSACT0p9dzehtJUyLvTwuOfFY8JKcG8hgfwt7IMjFqR3HfK4+EX12Qpb8H9gNkM/Kg==}
@@ -1099,10 +1087,6 @@ snapshots:
       protobufjs: 7.5.4
       yargs: 17.7.2
 
-  '@hanseltime/pulumi-file-utils@1.2.0(patch_hash=e5d211be610d1ebcd0e4781e82cb1ec57ab59635056aa758f4366f001a469c10)(@pulumi/pulumi@3.224.0(typescript@5.9.3))':
-    dependencies:
-      '@pulumi/pulumi': 3.224.0(typescript@5.9.3)
-
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
       minipass: 7.1.2
@@ -1335,7 +1319,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@pulumi/command@1.1.3(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)':
+  '@pulumi/command@1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)':
     dependencies:
       '@pulumi/pulumi': 3.224.0(typescript@5.9.3)
     transitivePeerDependencies:
