@@ -10,7 +10,7 @@ export interface ServerDnsArgs {
   porkbunSecretKey: pulumi.Input<string>;
 }
 
-export class ServerDns extends pulumi.ComponentResource {
+export class ServerDnsRecords extends pulumi.ComponentResource {
   public readonly baseDnsRecord: porkbun.DnsRecord;
   public readonly wildcardDnsRecord: porkbun.DnsRecord;
   public readonly provider: porkbun.Provider;

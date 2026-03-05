@@ -24,6 +24,7 @@ export interface ServerArgs {
   sshPublicKey: pulumi.Input<string>;
   vpsDomain: pulumi.Input<string>;
   resourceIdPrefix: string;
+  backups?: boolean;
 }
 
 export class Server extends pulumi.ComponentResource {
@@ -102,6 +103,9 @@ write_files:
         ...SERVER_DEFAULT_SPECS,
         userData: this.cloudInit,
         firewallIds: [this.firewall.id.apply(Number)],
+        ...(this.args.backups !== undefined
+          ? { backups: this.args.backups }
+          : {}),
       },
       {
         ...defaultResourceOptions,

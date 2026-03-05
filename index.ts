@@ -1,4 +1,9 @@
-import { loadConfiguration, ServerDns, AppDeployment, Server } from './pulumi';
+import {
+  loadConfiguration,
+  ServerDnsRecords,
+  AppDeployment,
+  Server,
+} from './pulumi';
 
 function main() {
   const config = loadConfiguration();
@@ -7,9 +12,10 @@ function main() {
     sshPublicKey: config.sshPublicKeyAkmin,
     vpsDomain: config.vpsDomain,
     resourceIdPrefix: 'pangolin',
+    backups: true,
   });
 
-  const dnsSetup = new ServerDns('pangolin-dns', {
+  new ServerDnsRecords('pangolin-dns', {
     server: server.server,
     domain: config.vpsDomain,
     resourceIdPrefix: 'pangolin',
@@ -19,7 +25,7 @@ function main() {
 
   const rebootCommand = server.initializeAndReboot(config.sshPrivateKeyAkmin);
 
-  const appDeployment = new AppDeployment('pangolin-app', {
+  new AppDeployment('pangolin-app', {
     server: server.server,
     sshPrivateKey: config.sshPrivateKeyAkmin,
     stackName: 'pangolin',
