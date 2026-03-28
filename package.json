@@ -3,7 +3,7 @@
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18.19.130",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.2"
     },
     "dependencies": {
         "@pulumi/command": "^1.2.1",
