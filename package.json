@@ -2,7 +2,7 @@
     "name": "PaC",
     "main": "index.ts",
     "devDependencies": {
-        "@types/node": "^18.19.130",
+        "@types/node": "^24.12.0",
         "typescript": "^5.9.3"
     },
     "dependencies": {
