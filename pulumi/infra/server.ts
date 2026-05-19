@@ -91,6 +91,10 @@ write_files:
       AllowAgentForwarding no
       AuthorizedKeysFile .ssh/authorized_keys
       AllowUsers akmin
+  - path: /etc/systemd/journald.conf.d/max-use.conf
+    content: |
+      [Journal]
+      SystemMaxUse=100M
 `,
       ),
     );
@@ -110,6 +114,7 @@ write_files:
       {
         ...defaultResourceOptions,
         dependsOn: [this.firewall],
+        ignoreChanges: ['userData'],
       },
     );
 
