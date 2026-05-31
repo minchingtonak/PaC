@@ -1,5 +1,7 @@
-onlyBuiltDependencies:
-  - '@pulumi/porkbun'
+allowBuilds:
+  '@pulumi/command': true
+  '@pulumi/porkbun': true
+  protobufjs: true
 
 patchedDependencies:
   "@pulumi/command": patches/@pulumi__command.patch
