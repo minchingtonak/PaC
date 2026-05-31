@@ -15,16 +15,16 @@ importers:
     dependencies:
       '@pulumi/command':
         specifier: ^1.2.1
-        version: 1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)
+        version: 1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@6.0.3)
       '@pulumi/hcloud':
         specifier: ^1.35.0
-        version: 1.35.0(typescript@5.9.3)
+        version: 1.35.0(typescript@6.0.3)
       '@pulumi/porkbun':
         specifier: file:sdks/porkbun
         version: file:sdks/porkbun
       '@pulumi/pulumi':
         specifier: ^3.239.0
-        version: 3.239.0(typescript@5.9.3)
+        version: 3.239.0(typescript@6.0.3)
       handlebars:
         specifier: ^4.7.9
         version: 4.7.9
@@ -33,8 +33,8 @@ importers:
         specifier: ^24.12.4
         version: 24.12.4
       typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
+        specifier: ^6.0.3
+        version: 6.0.3
 
 packages:
 
@@ -1050,8 +1050,8 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -1458,17 +1458,17 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@pulumi/command@1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)':
+  '@pulumi/command@1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@6.0.3)':
     dependencies:
-      '@pulumi/pulumi': 3.224.0(typescript@5.9.3)
+      '@pulumi/pulumi': 3.224.0(typescript@6.0.3)
     transitivePeerDependencies:
       - supports-color
       - ts-node
       - typescript
 
-  '@pulumi/hcloud@1.35.0(typescript@5.9.3)':
+  '@pulumi/hcloud@1.35.0(typescript@6.0.3)':
     dependencies:
-      '@pulumi/pulumi': 3.224.0(typescript@5.9.3)
+      '@pulumi/pulumi': 3.224.0(typescript@6.0.3)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1519,7 +1519,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@pulumi/pulumi@3.224.0(typescript@5.9.3)':
+  '@pulumi/pulumi@3.224.0(typescript@6.0.3)':
     dependencies:
       '@grpc/grpc-js': 1.14.3
       '@logdna/tail-file': 2.2.0
@@ -1550,11 +1550,11 @@ snapshots:
       tmp: 0.2.5
       upath: 1.2.0
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
 
-  '@pulumi/pulumi@3.239.0(typescript@5.9.3)':
+  '@pulumi/pulumi@3.239.0(typescript@6.0.3)':
     dependencies:
       '@grpc/grpc-js': 1.14.3
       '@logdna/tail-file': 2.2.0
@@ -1584,7 +1584,7 @@ snapshots:
       tmp: 0.2.5
       upath: 1.2.0
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
 
@@ -2351,7 +2351,7 @@ snapshots:
 
   typescript@4.9.5: {}
 
-  typescript@5.9.3: {}
+  typescript@6.0.3: {}
 
   uglify-js@3.19.3:
     optional: true
