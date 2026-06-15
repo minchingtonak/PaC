@@ -9,7 +9,7 @@
         "@pulumi/command": "^1.2.1",
         "@pulumi/hcloud": "^1.37.0",
         "@pulumi/porkbun": "file:sdks/porkbun",
-        "@pulumi/pulumi": "^3.243.0",
+        "@pulumi/pulumi": "^3.246.0",
         "handlebars": "^4.7.9"
     }
 }
