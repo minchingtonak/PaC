@@ -15,7 +15,7 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)
       '@pulumi/hcloud':
-        specifier: ^1.39.0
+        specifier: ^1.39.1
         version: 1.39.1(typescript@5.9.3)
       '@pulumi/porkbun':
         specifier: file:sdks/porkbun
