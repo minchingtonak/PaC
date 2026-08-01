@@ -7,7 +7,7 @@
     },
     "dependencies": {
         "@pulumi/command": "^1.2.1",
-        "@pulumi/hcloud": "^1.39.1",
+        "@pulumi/hcloud": "^1.40.0",
         "@pulumi/porkbun": "file:sdks/porkbun",
         "@pulumi/pulumi": "^3.254.0",
         "handlebars": "^4.7.9"
