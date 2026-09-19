@@ -8,6 +8,8 @@ const FIREWALL_RULES = [
   { port: '80', protocol: 'tcp', description: 'http' },
   { port: '443', protocol: 'tcp', description: 'https' },
   { port: '25565', protocol: 'tcp', description: 'minecraft' },
+  { port: '3724', protocol: 'tcp', description: 'wow authserver' },
+  { port: '8085', protocol: 'tcp', description: 'wow worldserver' },
   { port: '51820', protocol: 'udp', description: 'pangolin' },
   { port: '21820', protocol: 'udp', description: 'pangolin' },
 ];

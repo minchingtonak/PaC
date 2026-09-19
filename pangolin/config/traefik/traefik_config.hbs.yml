@@ -41,6 +41,10 @@ entryPoints:
         certResolver: 'letsencrypt'
   tcp-25565:
     address: ":25565/tcp"
+  tcp-3724:
+    address: ":3724/tcp"
+  tcp-8085:
+    address: ":8085/tcp"
 
 serversTransport:
   insecureSkipVerify: true
