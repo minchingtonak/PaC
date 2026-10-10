@@ -10,6 +10,6 @@
         "@pulumi/hcloud": "^1.42.0",
         "@pulumi/porkbun": "file:sdks/porkbun",
         "@pulumi/pulumi": "^3.262.0",
-        "handlebars": "^4.7.9"
+        "handlebars": "^4.7.10"
     }
 }
