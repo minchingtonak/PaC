@@ -1,40 +1,41 @@
 {
-  // https://docs.renovatebot.com/configuration-options
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  // https://emmer.dev/blog/keep-docker-base-images-updated-with-renovate
-  // https://nickcunningh.am/blog/how-to-automate-version-updates-for-your-self-hosted-docker-containers-with-gitea-renovate-and-komodo
-  extends: ['config:recommended'],
+  extends: [
+    'config:recommended',
+  ],
   dependencyDashboard: true,
   dependencyDashboardTitle: 'Renovate Dashboard',
-
-  schedule: 'every saturday',
-
+  schedule: 'on saturday',
   timezone: 'America/New_York',
-  // always open vulnerability-fixing pull requests immediately
-  vulnerabilityAlerts: { labels: ['security'], schedule: 'at any time' },
-
+  vulnerabilityAlerts: {
+    labels: [
+      'security',
+    ],
+    schedule: 'at any time',
+  },
   ignoreUnstable: true,
   minimumReleaseAge: '4 days',
   minimumReleaseAgeBehaviour: 'timestamp-optional',
-
   prHourlyLimit: 0,
   prConcurrentLimit: 0,
-
-  // https://docs.renovatebot.com/configuration-options/#prbodytemplate
   prBodyTemplate: '{{{header}}}{{{table}}}{{{warnings}}}{{{notes}}}{{{configDescription}}}{{{controls}}}{{{footer}}}',
-
-  ignorePaths: ['sdks/**'],
-
+  ignorePaths: [
+    'sdks/**',
+  ],
   rangeStrategy: 'bump',
-
   pruneStaleBranches: false,
-
   packageRules: [
     {
-      matchPackageNames: ['fosrl/pangolin'],
+      matchCategories: [
+        'docker',
+      ],
+      pinDigests: true,
+    },
+    {
+      matchPackageNames: [
+        'fosrl/pangolin',
+      ],
       versioning: 'regex:^(?<compatibility>ee)-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
     },
   ],
-
-  docker: { pinDigests: true },
 }
