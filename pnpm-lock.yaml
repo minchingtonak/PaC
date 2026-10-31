@@ -21,7 +21,7 @@ importers:
         specifier: file:sdks/porkbun
         version: file:sdks/porkbun
       '@pulumi/pulumi':
-        specifier: ^3.270.0
+        specifier: ^3.272.0
         version: 3.272.0(typescript@5.9.3)
       handlebars:
         specifier: ^4.7.10
