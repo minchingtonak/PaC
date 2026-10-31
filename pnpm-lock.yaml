@@ -15,8 +15,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)
       '@pulumi/hcloud':
-        specifier: ^1.43.1
-        version: 1.43.1(typescript@5.9.3)
+        specifier: ^1.43.3
+        version: 1.43.3(typescript@5.9.3)
       '@pulumi/porkbun':
         specifier: file:sdks/porkbun
         version: file:sdks/porkbun
@@ -258,8 +258,8 @@ packages:
   '@pulumi/command@1.2.1':
     resolution: {integrity: sha512-mutNDIUYP67yCBYOVIidQyxuTwZDY9v/sx9EGbgIv4PXfyfolOKGgGLeoHEbI1lxRwaw2wbTZ3VNIynDnA5VKA==}
 
-  '@pulumi/hcloud@1.43.1':
-    resolution: {integrity: sha512-6UjewEWMjzrT5/9mGn/XKSDoXbn1ohZn9O55MaDQuqWoAzZvtqrDTmuN9rIvj6pdUl5yyRwKOnupabLV29l2mQ==}
+  '@pulumi/hcloud@1.43.3':
+    resolution: {integrity: sha512-fDKUoud52U0SkkF9crANNL9lmrwM3LrOtVR5qZXerqegZSDCaGyDzd92wuJrLlWn74xUirNKYJbmmY9yk3mZ9g==}
 
   '@pulumi/porkbun@file:sdks/porkbun':
     resolution: {directory: sdks/porkbun, type: directory}
@@ -1230,7 +1230,7 @@ snapshots:
       - ts-node
       - typescript
 
-  '@pulumi/hcloud@1.43.1(typescript@5.9.3)':
+  '@pulumi/hcloud@1.43.3(typescript@5.9.3)':
     dependencies:
       '@pulumi/pulumi': 3.272.0(typescript@5.9.3)
     transitivePeerDependencies:
