@@ -21,8 +21,8 @@ importers:
         specifier: file:sdks/porkbun
         version: file:sdks/porkbun
       '@pulumi/pulumi':
-        specifier: ^3.270.0
-        version: 3.272.0(typescript@5.9.3)
+        specifier: ^3.273.0
+        version: 3.274.0(typescript@5.9.3)
       handlebars:
         specifier: ^4.7.10
         version: 4.7.10
@@ -264,8 +264,8 @@ packages:
   '@pulumi/porkbun@file:sdks/porkbun':
     resolution: {directory: sdks/porkbun, type: directory}
 
-  '@pulumi/pulumi@3.272.0':
-    resolution: {integrity: sha512-DepbT+tA3HnNo5+OtEMEevK1pC45PD/71sQh3tlWYFtW4tjuZijAQprvgCYcQUKNwRP3/Y3z83Kbvxn7y9HR2w==}
+  '@pulumi/pulumi@3.274.0':
+    resolution: {integrity: sha512-y8R/BryUgfxaE/6jdJV+TO1yq/wFluTJidsTEMSAEli4tLudNmf4QCGNFhj8fQX97G4xBDuFgF/OUDTYi9UMXw==}
     engines: {node: '>=22'}
     peerDependencies:
       ts-node: '>= 7.0.1 < 12'
@@ -1224,7 +1224,7 @@ snapshots:
 
   '@pulumi/command@1.2.1(patch_hash=919098b7983a0c44a474b49643a0b6dab49758d46ed3cee62c9cb630fd431dd6)(typescript@5.9.3)':
     dependencies:
-      '@pulumi/pulumi': 3.272.0(typescript@5.9.3)
+      '@pulumi/pulumi': 3.274.0(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1232,7 +1232,7 @@ snapshots:
 
   '@pulumi/hcloud@1.43.1(typescript@5.9.3)':
     dependencies:
-      '@pulumi/pulumi': 3.272.0(typescript@5.9.3)
+      '@pulumi/pulumi': 3.274.0(typescript@5.9.3)
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1240,7 +1240,7 @@ snapshots:
 
   '@pulumi/porkbun@file:sdks/porkbun':
     dependencies:
-      '@pulumi/pulumi': 3.272.0(typescript@4.9.5)
+      '@pulumi/pulumi': 3.274.0(typescript@4.9.5)
       '@types/node': 18.19.130
       async-mutex: 0.5.0
       typescript: 4.9.5
@@ -1248,7 +1248,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  '@pulumi/pulumi@3.272.0(typescript@4.9.5)':
+  '@pulumi/pulumi@3.274.0(typescript@4.9.5)':
     dependencies:
       '@grpc/grpc-js': 1.14.3
       '@logdna/tail-file': 2.2.0
@@ -1280,7 +1280,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@pulumi/pulumi@3.272.0(typescript@5.9.3)':
+  '@pulumi/pulumi@3.274.0(typescript@5.9.3)':
     dependencies:
       '@grpc/grpc-js': 1.14.3
       '@logdna/tail-file': 2.2.0
