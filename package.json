@@ -6,7 +6,7 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
-        "@pulumi/command": "^1.2.1",
+        "@pulumi/command": "^1.3.0",
         "@pulumi/hcloud": "^1.43.4",
         "@pulumi/porkbun": "file:sdks/porkbun",
         "@pulumi/pulumi": "^3.274.0",
